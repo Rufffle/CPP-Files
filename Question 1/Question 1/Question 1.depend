@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1620287469 source:c:\users\user\desktop\afra\stacktype.cpp
+	<iostream>
+	"stacktype.h"
+
+1620287361 c:\users\user\desktop\afra\stacktype.h
+	"stacktype.cpp"
+
+1620287469 c:\users\user\desktop\afra\stacktype.cpp
+	<iostream>
+	"stacktype.h"
+
+1620286201 source:c:\users\user\desktop\afra\main.cpp
+	<iostream>
+	<stack>
+

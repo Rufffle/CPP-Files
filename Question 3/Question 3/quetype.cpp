@@ -1,0 +1,106 @@
+#ifndef QUETYPE_CPP_INCLUDED
+#define QUETYPE_CPP_INCLUDED
+
+#include "quetype.h"
+#include <iostream>
+using namespace std;
+template <class ItemType>
+QueType<ItemType>::QueType()
+{
+    front = NULL;
+    rear = NULL;
+}
+template <class ItemType>
+bool QueType<ItemType>::IsEmpty()
+{
+    return (front == NULL);
+}
+template<class ItemType>
+bool QueType<ItemType>::IsFull()
+{
+    NodeType* location;
+    try
+    {
+        location = new NodeType;
+        delete location;
+        return false;
+    }
+    catch(bad_alloc& exception)
+    {
+        return true;
+    }
+}
+template <class ItemType>
+void QueType<ItemType>::Enqueue(ItemType newItem)
+{
+    if (IsFull())
+        throw FullQueue();
+    else
+    {
+        NodeType* newNode;
+        newNode = new NodeType;
+        newNode->info = newItem;
+        newNode->next = NULL;
+        if (rear == NULL)
+            front = newNode;
+        else
+            rear->next = newNode;
+        rear = newNode;
+    }
+}
+template <class ItemType>
+void QueType<ItemType>::Dequeue(ItemType& item)
+{
+    if (IsEmpty())
+        throw EmptyQueue();
+    else
+    {
+        NodeType* tempPtr;
+        tempPtr = front;
+        item = front->info;
+        front = front->next;
+        if (front == NULL)
+            rear = NULL;
+        delete tempPtr;
+    }
+}
+template <class ItemType>
+void QueType<ItemType>::MakeEmpty()
+{
+    NodeType* tempPtr;
+    while (front != NULL)
+    {
+        tempPtr = front;
+        front = front->next;
+        delete tempPtr;
+    }
+    rear = NULL;
+}
+template <class ItemType>
+QueType<ItemType>::~QueType()
+{
+    MakeEmpty();
+}
+template <class ItemType>
+void QueType<ItemType>::reverse()
+    {
+        // Initialize current, previous and
+        // next pointers
+        NodeType* current = front;
+        NodeType *prev = NULL, *next = NULL;
+
+        while (current != NULL) {
+            // Store next
+            next = current->next;
+
+            // Reverse current node's pointer
+            current->next = prev;
+
+            // Move pointers one position ahead.
+            prev = current;
+            current = next;
+        }
+        front = prev;
+    }
+
+#endif // QUETYPE_CPP_INCLUDED

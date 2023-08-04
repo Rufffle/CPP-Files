@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1620288296 source:c:\users\user\desktop\question 3\quetype.cpp
+	"quetype.h"
+	<iostream>
+
+1620288201 c:\users\user\desktop\question 3\quetype.h
+	"quetype.cpp"
+
+1620288296 c:\users\user\desktop\question 3\quetype.cpp
+	"quetype.h"
+	<iostream>
+
